@@ -37,4 +37,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: nilanjanb3/goproductsapi:${DOCKER_IMAGE_TAG}
+          tags: nilanjanb3/goproductsapi:${{DOCKER_IMAGE_TAG}}
