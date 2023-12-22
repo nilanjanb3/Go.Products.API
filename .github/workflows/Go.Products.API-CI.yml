@@ -35,4 +35,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: nilanjanb3/goproductsapi:${{GITHUB_SHA::8}}
+          tags: nilanjanb3/goproductsapi:${GITHUB_SHA::8}
