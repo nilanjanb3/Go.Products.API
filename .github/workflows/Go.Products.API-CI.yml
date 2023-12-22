@@ -37,5 +37,5 @@ jobs:
           context: .
           push: true
           tags: |
-            - nilanjanb3/goproductsapi:${{ github.sha :: 8 }}
+            - nilanjanb3/goproductsapi:${{ github.short_sha }}
             - nilanjanb3/goproductsapi:latest
