@@ -25,7 +25,8 @@ jobs:
 
       # - name: Test
       #   run: go test -v ./...
-
+      - name: Set shortened SHA
+        run: echo "SHORT_SHA=${{ github.sha:0:7 }}" >> $GITHUB_ENV
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
@@ -37,5 +38,5 @@ jobs:
           context: .
           push: true
           tags: |
-            - nilanjanb3/goproductsapi:${{ github.short_sha }}
+            - nilanjanb3/goproductsapi:$SHORT_SHA
             - nilanjanb3/goproductsapi:latest
