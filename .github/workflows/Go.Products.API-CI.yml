@@ -19,6 +19,8 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: "1.21"
+          cache-dependency-path: src/go.sum
+
 
       - name: Build
         run: go build -v src/...
@@ -27,16 +29,15 @@ jobs:
       #   run: go test -v ./...
       - name: Set shortened SHA
         run: echo "sha_short=$(git rev-parse --short "$GITHUB_SHA")" >> "$GITHUB_ENV"
+
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: true
-          tags: |
-            - nilanjanb3/goproductsapi:${{ env.sha_short }}
-            - nilanjanb3/goproductsapi:latest
+        run: |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/goproductsapi:${{ env.sha_short }} -t nilanjanb3/goproductsapi:latest .
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/goproductsapi:${{ env.sha_short }}
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/goproductsapi:latest
