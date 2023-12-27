@@ -6,9 +6,9 @@ This repository is made to document CRUD Operation of a simple Products API in G
 
 Before running the application, make sure you have the following installed on your system:
 
-- Golang
-- GORM
-- MySQL
+- [Golang](https://go.dev/)
+- [GORM](https://gorm.io/index.html)
+- [MySQL](https://www.mysql.com/)
 
 ## Installation
 
@@ -20,6 +20,8 @@ Before running the application, make sure you have the following installed on yo
 
 The application requires a MySQL database to be set up. Update the database connection details in the `constants.go` file located in the `src` directory.
 
+You can use the [docker-compose.yaml](./docker-compose.yaml) file to set up MySQL locally.
+
 ## Usage
 
 To run the application, use the following command:
@@ -28,7 +30,7 @@ To run the application, use the following command:
 go run *.go
 ```
 
-The application will be accessible at http://localhost:3000.
+The application will be accessible at http://localhost:80
 
 API Endpoints
 -------------
@@ -41,6 +43,10 @@ The following API endpoints are available:
 - `POST /products`: Creates a new product.
 - `PUT /product/{id}`: Updates a product by ID.
 - `DELETE /product/{id}`: Deletes a product by ID.
+
+CI/CD
+-----
+Check the GitHub Action part for the continuous integration.
 
 License
 -------
